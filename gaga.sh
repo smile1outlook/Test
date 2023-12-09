@@ -11,12 +11,12 @@ for city in "${City[@]}"; do
   i=$(($i+1))
 done
 
-#City_ipvanish=("Ashburn" "Atlanta" "Boston" "Charlotte" "Chicago" "Dallas" "Cincinnati" "Miami" "New York" "Phoenix" "San Jose" "Seattle" "Denver" "Las Vegas" "Los Angeles" "Houston" "Montreal" "Luxembourg" "Madrid" "Manchester" "Marseille" "Melbourne" "Marseille" "Paris" "Milan")
+City_ipvanish=("Ashburn" "Atlanta" "Boston" "Charlotte" "Chicago" "Dallas" "Cincinnati" "Miami" "New York" "Phoenix" "San Jose" "Seattle" "Denver" "Las Vegas" "Los Angeles" "Houston" "Montreal" "Luxembourg" "Madrid" "Manchester" "Marseille" "Melbourne" "Marseille" "Paris" "Milan" "Tirana" "Sydney" "Vienna" "Brussels" "Sao Paulo" "Toronto" "Bogota" "Prague" "Budapest" "Dublin" "Guadalajara" "Oslo")
 
-ipvanish_resvpn=("atl-a43.ipvanish.com" "lax-a01.ipvanish.com" "nyc-a41.ipvanish.com" "den-a01.ipvanish.com" "lax-a32.ipvanish.com" "iad-a01.ipvanish.com" "sea-a01.ipvanish.com" "atl-a19.ipvanish.com" "chi-a07.ipvanish.com" "nyc-a01.ipvanish.com" "sjc-a01.ipvanish.com" "iad-a77.ipvanish.com" "chi-a01.ipvanish.com" "syd-a29.ipvanish.com" "mia-a07.ipvanish.com" "mia-a02.ipvanish.com" "atl-a69.ipvanish.com" "sel-a03.ipvanish.com" "mrs-c07.ipvanish.com" "otp-c04.ipvanish.com" "bts-c05.ipvanish.com" "par-a25.ipvanish.com" "sto-a01.ipvanish.com" "mad-a01.ipvanish.com" "" "lin-a13.ipvanish.com" "tia-c03.ipvanish.com" "eze-c03.ipvanish.com" "adl-c06.ipvanish.com" "vie-c13.ipvanish.com")
+#ipvanish_resvpn=("atl-a43.ipvanish.com" "lax-a01.ipvanish.com" "nyc-a41.ipvanish.com" "den-a01.ipvanish.com" "lax-a32.ipvanish.com" "iad-a01.ipvanish.com" "sea-a01.ipvanish.com" "atl-a19.ipvanish.com" "chi-a07.ipvanish.com" "nyc-a01.ipvanish.com" "sjc-a01.ipvanish.com" "iad-a77.ipvanish.com" "chi-a01.ipvanish.com" "syd-a29.ipvanish.com" "mia-a07.ipvanish.com" "mia-a02.ipvanish.com" "atl-a69.ipvanish.com" "sel-a03.ipvanish.com" "mrs-c07.ipvanish.com" "otp-c04.ipvanish.com" "bts-c05.ipvanish.com" "par-a25.ipvanish.com" "sto-a01.ipvanish.com" "mad-a01.ipvanish.com" "" "lin-a13.ipvanish.com" "tia-c03.ipvanish.com" "eze-c03.ipvanish.com" "adl-c06.ipvanish.com" "vie-c13.ipvanish.com")
 
-for city in "${ipvanish_resvpn[@]}"; do
-  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_HOSTNAMES="$city" -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun && sleep 30 && sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
+for city in "${City_Ipvanish[@]}"; do
+  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_CITIES="$city" -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun && sleep 30 && sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
   docker logs --tail 5 vpn$i
   echo $i $city
   i=$(($i+1))
