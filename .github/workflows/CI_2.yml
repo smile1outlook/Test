@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: sudo chmod +x gaga2.sh && ./gaga2.sh
+        run: sudo chmod +x gaga_2.sh && ./gaga_2.sh
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
