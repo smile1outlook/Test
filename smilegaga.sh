@@ -24,7 +24,7 @@ destroy () {
 for j in {1..6}; do
   index=$(($RANDOM % $size))
   destroy
-  until docker logs --tail 3 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then docker stop vpn$i gaga$i && docker rm vpn$i gaga$i && sleep 10 && destroy && sleep 5; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 0.5; fi; done
+  until docker logs --tail 3 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then docker stop vpn$i gaga$i && docker rm vpn$i gaga$i && sleep 10 && index=$(($RANDOM % $size)) && destroy && sleep 5; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 0.5; fi; done
   docker logs --tail 3 gaga$i
   echo $i
   i=$(($i+1))
