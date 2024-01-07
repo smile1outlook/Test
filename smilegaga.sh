@@ -20,8 +20,8 @@ size=${#array[@]}
 
 for j in {1..6}; do
   index=$(($RANDOM % $size))
-  creates 
-  until docker logs --tail 3 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then docker stop vpn$i gaga$i && docker rm vpn$i gaga$i && sleep 10 && index=$(($RANDOM % $size)) && destroy && sleep 5; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
+  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_COUNTRIES=${array[$index]} -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun && sleep 10 && sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode 
+  until docker logs --tail 3 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then docker stop vpn$i gaga$i && docker rm vpn$i gaga$i && sleep 10 && index=$(($RANDOM % $size)) && docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_COUNTRIES=${array[$index]} -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun && sleep 10 && sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode && sleep 5; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
   docker logs --tail 3 gaga$i
   echo $i
   i=$(($i+1))
