@@ -4,7 +4,7 @@ apt update && apt install sudo docker.io curl && sudo rm -rf /sbin/initctl && su
 
 
 # City=("United States" "Netherlands" "Japan")
-i=1
+#i=1
 # for city in "${City[@]}"; do
 #   docker run -itd --name vpn$i --cap-add=NET_ADMIN --env VPN_SERVICE_PROVIDER=protonvpn --env OPENVPN_USER=o1Qk8A7NBqkFRJms --env OPENVPN_PASSWORD=zKBloSojLyfmQtU6jex9UY4QU2YeczL0 --env SERVER_COUNTRIES="$city" --env FREE_ONLY=on -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun && sleep 10 && sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
 #   echo $i $city
@@ -24,14 +24,13 @@ create_dock () {
   sleep 10 
   sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
 }
-
+#i=$(($i+1))
 sleep 10
 
-while :; do for j in {1..6}; do
+while :; do for i in {1..6}; do
   index=$(($RANDOM % $size)) && create_dock && until docker logs --tail 2 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then index=$(($RANDOM % $size)) && docker stop vpn$i gaga$i && sleep 5 && docker rm vpn$i gaga$i && sleep 5 && create_dock && sleep 10; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
   docker logs --tail 3 gaga$i
   echo $i
-  i=$(($i+1))
 done && sleep 100; done
 
 # purevpn_city=("Miami" "Phoenix" "Los Angeles" "Chicago" "New Jersey" "New York" "Houston" "Atlanta" "Washington DC" "Ashburn" "San Francisco" "Seattle" "Salt Lake City" "Seoul" "Melbourne" "Brisbane" "Sydney" "Perth")
