@@ -1,6 +1,8 @@
 #!/bin/bash
 
-apt update && apt install sudo docker.io curl && sudo rm -rf /sbin/initctl && sudo ln -s /sbin/initctl.distrib /sbin/initctl && export TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 && wget https://github.com/jepbura/gaganode/raw/master/gaganode_install.sh && sudo chmod +x gaganode_install.sh && sudo apt install screen -y && screen -d -m ./gaganode_install.sh
+apt update && apt install sudo docker.io curl 
+
+## sudo rm -rf /sbin/initctl && sudo ln -s /sbin/initctl.distrib /sbin/initctl && export TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 && wget https://github.com/jepbura/gaganode/raw/master/gaganode_install.sh && sudo chmod +x gaganode_install.sh && sudo apt install screen -y && screen -d -m ./gaganode_install.sh
 
 
 # City=("United States" "Netherlands" "Japan")
@@ -27,7 +29,7 @@ create_dock () {
 #i=$(($i+1))
 sleep 10
 
-while :; do for i in {1..30}; do
+while :; do for i in {1..50}; do
   index=$(($RANDOM % $size)) && create_dock && until docker logs --tail 2 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then index=$(($RANDOM % $size)) && docker stop vpn$i gaga$i && sleep 5 && docker rm vpn$i gaga$i && sleep 5 && create_dock && sleep 10; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
   docker logs --tail 3 gaga$i
   echo $i
