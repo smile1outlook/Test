@@ -22,7 +22,7 @@ size=${#array[@]}
 docker pull qmcgaw/gluetun
 docker pull jepbura/gaganode
 create_dock () {
-  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_COUNTRIES="United States" -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun 
+  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_COUNTRIES="United States" -p 8$i:8$i -p 52$i:52$i -p 52$i:52$i/udp qmcgaw/gluetun 
   sleep 10 
   sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=xewyckemvmzqfkjk4d8127f023808e05 jepbura/gaganode
 }
