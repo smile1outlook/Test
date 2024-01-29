@@ -31,7 +31,7 @@ sleep 10
 ## index=$(($RANDOM % $size)) && create_dock && 
 
 while :; do for i in {1..99}; do
-  nodename="gaga'$i'" && vpnname="vpn'$i'"
+  nodename="gaga$i" && vpnname="vpn$i"
   until docker logs --tail 2 gaga$i | grep 'node started'; do if docker logs --tail 4 $nodename | grep -E 'vpn|err:|node config will|ERRO|command not found|node exit'; then index=$(($RANDOM % $size)) && docker stop vpn$i gaga$i && sleep 5 && docker rm vpn$i gaga$i && sleep 5 && create_dock && sleep 10; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
   docker logs --tail 3 gaga$i
   echo $i
