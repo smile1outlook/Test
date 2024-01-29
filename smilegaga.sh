@@ -27,7 +27,7 @@ create_dock () {
   sudo docker run -itd --name $nodename --network=container:$vpnname --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
 }
 #i=$(($i+1))
-sleep 10
+#sleep 10
 ## index=$(($RANDOM % $size)) && create_dock && 
 
 while :; do for i in {1..99}; do
