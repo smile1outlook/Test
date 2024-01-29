@@ -23,7 +23,7 @@ docker pull qmcgaw/gluetun
 docker pull jepbura/gaganode
 create_dock () {
   docker run -itd --name $vpnname --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=isinift180115@gmail.com --env OPENVPN_PASSWORD=Hoarse15 --env SERVER_COUNTRIES=${array[$index]} -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun
-  sleep 5
+  sleep 15
   sudo docker run -itd --name $nodename --network=container:$vpnname --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
 }
 #i=$(($i+1))
@@ -33,13 +33,7 @@ create_dock () {
 while :; do for i in {1..99}; do
   index=$(($RANDOM % $size))
   nodename="gaga$i" && vpnname="vpn$i"
-
-  result=$( sudo docker images -q nginx )
-  if [[ -n "$result" ]]; then
-    echo halo
-  else
-    create_dock
-  fi
+  docker top $nodename || create_dock
   until docker logs --tail 2 $nodename | grep 'node started'; do if docker logs --tail 4 $nodename | grep -E 'vpn|err:|node config will|ERRO|command not found|node exit'; then index=$(($RANDOM % $size)) && docker stop vpn$i gaga$i && sleep 5 && docker rm $vpnname $nodename && sleep 5 && create_dock && sleep 10; else echo retrying.. $i && docker logs --tail 4 $nodename && sleep 10; fi; done
   docker logs --tail 3 $nodename
   echo $i
