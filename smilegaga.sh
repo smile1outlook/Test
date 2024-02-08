@@ -22,8 +22,8 @@ docker pull qmcgaw/gluetun
 docker pull jepbura/gaganode
 #-p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp
 create_dock () {
-  docker run -itd --rm --cap-add=NET_ADMIN -e BLOCK_MALICIOUS=off -e BLOCK_SURVEILLANCE=off -e BLOCK_ADS=off -e DOT=off -e VPN_SERVICE_PROVIDER=windscribe -e VPN_TYPE=openvpn -e OPENVPN_USER="6sujvyhr-jpwncz4" -e OPENVPN_PASSWORD="h3dfk2wsy6" -e SERVER_REGIONS="${array[$index]}" --name vpn$i \ 
-  qmcgaw/gluetun
+  docker run -itd --rm --cap-add=NET_ADMIN -e BLOCK_MALICIOUS=off -e BLOCK_SURVEILLANCE=off -e BLOCK_ADS=off -e DOT=off -e VPN_SERVICE_PROVIDER=windscribe -e VPN_TYPE=openvpn -e OPENVPN_USER="6sujvyhr-jpwncz4" -e OPENVPN_PASSWORD="h3dfk2wsy6" -e SERVER_REGIONS="${array[$index]}" --name vpn$i \
+qmcgaw/gluetun
   docker top $vpnname || create_dock
   sleep 10
   sudo docker run -itd --rm --name $nodename --network=container:$vpnname --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
