@@ -1,6 +1,6 @@
 #!/bin/bash
 
-array=("US Central" "US East" "US West") 
+array=("US East" "Indonesia" "South Korea") 
 #"Indonesia" "South Korea"
 size=${#array[@]}
 docker pull qmcgaw/gluetun
