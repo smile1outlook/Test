@@ -24,10 +24,10 @@ docker pull jepbura/gaganode
 create_dock () {
   docker run -itd --rm --cap-add=NET_ADMIN --name vpn$i -e BLOCK_MALICIOUS=off -e BLOCK_SURVEILLANCE=off -e BLOCK_ADS=off -e DOT=off -e VPN_SERVICE_PROVIDER=windscribe -e VPN_TYPE=openvpn -e OPENVPN_USER="6sujvyhr-jpwncz4" -e OPENVPN_PASSWORD="h3dfk2wsy6" -e SERVER_REGIONS="${array[$index]}" qmcgaw/gluetun
   sleep 10
-  docker top $vpnname || create_dock
-  until docker top $vpnname; do echo "haha" && sleep 1; done
-  sudo docker run -itd --rm --name $nodename --network=container:$vpnname --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
-  until docker top $vpnname; do echo "haha" && sleep 1; done
+  #docker top $vpnname || create_dock
+  #until docker top $vpnname; do echo "haha" && sleep 1; done
+  docker run -itd --rm --name $nodename --network=container:vpn$i--env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
+  #until docker top $vpnname; do echo "haha" && sleep 1; done
 }
 #i=$(($i+1))
 #sleep 10
