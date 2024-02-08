@@ -26,6 +26,7 @@ create_dock () {
   docker top $vpnname || create_dock
   until docker top $vpnname; do echo "haha" && sleep 1; done
   sudo docker run -itd --rm --name $nodename --network=container:$vpnname --env TOKEN=hbzrwiekmvbdlaqudd1ea590f967ccf9 jepbura/gaganode
+  until docker top $vpnname; do echo "haha" && sleep 1; done
 }
 #i=$(($i+1))
 #sleep 10
