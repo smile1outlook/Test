@@ -15,11 +15,12 @@ create_dock () {
 }
 #i=$(($i+1))
 
-while :; do for i in {1..100}; do
-  index=$(($RANDOM % $size)) && create_dock
+for i in {1..100}; do
+  index=$(($RANDOM % $size))
+  create_dock
   docker logs vpn$i
-  echo $i
-done && sleep 100; done
+  echo $i;
+done
 
 # purevpn_city=("Miami" "Phoenix" "Los Angeles" "Chicago" "New Jersey" "New York" "Houston" "Atlanta" "Washington DC" "Ashburn" "San Francisco" "Seattle" "Salt Lake City" "Seoul" "Melbourne" "Brisbane" "Sydney" "Perth")
 #purevpn_region=("Washington" "Virginia" "Utah" "Arizona" "California" "Florida" "Georgia" "Illinois" "New York" "Texas" "Washington" "Virginia" "Utah" "Arizona" "California" "Florida" "Georgia" "Illinois" "New York" "Texas" "Washington" "Virginia" "Utah" "Arizona" "California" "Florida" "Georgia" "Illinois" "Washington" "Virginia" "Utah" "Arizona" "California" "Florida" "Georgia" "Illinois" "New York" "Texas" "Washington" "Virginia" "Utah" "Arizona" "California" "Florida" "Georgia" "Illinois")
