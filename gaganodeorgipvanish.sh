@@ -17,13 +17,13 @@ size=${#array[@]}
 docker pull qmcgaw/gluetun
 docker pull jepbura/gaganode
 create_dock () {
-  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=$usernamevpn --env OPENVPN_PASSWORD=$passwordvpn --env SERVER_COUNTRIES=${array[$index]} -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun 
+  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=$usernamevpn --env OPENVPN_PASSWORD=$passwordvpn --env SERVER_COUNTRIES=${array[$index]} qmcgaw/gluetun 
   sleep 10 
   sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=$tokengaga jepbura/gaganode
 }
 #i=$(($i+1))
 
-for i in {1..$jumlahnode}; do
+for i in $(seq "$jumlahnode"); do
   index=$(($RANDOM % $size))
   create_dock
   docker logs vpn$i
