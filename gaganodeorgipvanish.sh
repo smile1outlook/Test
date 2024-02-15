@@ -8,6 +8,8 @@ echo "username vpn:"
 read usernamevpn
 echo "password vpn:"
 read passwordvpn
+echo "jumlah node:"
+read jumlahnode
 
 array=("Canada" "Chile" "Colombia" "Costa Rica" "Croatia" "Czech Republic" "Denmark" "Estonia" "Finland" "France" "Germany" "Greece" "Hungary" "Iceland" "India" "Ireland" "Italy" "Japan" "Luxembourg" "Malaysia" "Mexico" "Moldova" "Netherlands" "New Zealand" "Norway" "Peru" "Poland" "Portugal" "Romania" "Serbia" "Singapore" "Slovakia" "Slovenia" "Spain" "Sweden" "Switzerland" "Turkey" "United Arab Emirates" "United Kingdom" "United States" "Korea") 
 
@@ -21,7 +23,7 @@ create_dock () {
 }
 #i=$(($i+1))
 
-for i in {1..100}; do
+for i in {1..$jumlahnode}; do
   index=$(($RANDOM % $size))
   create_dock
   docker logs vpn$i
