@@ -15,7 +15,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN rm -rf /sbin/initctl && ln -s /sbin/initctl.distrib /sbin/initctl
 
 # Set as default user
-USER ubuntu
+# USER ubuntu
 
 WORKDIR /myApp
 
