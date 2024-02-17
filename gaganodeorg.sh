@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo "token gaga:"
+read tokengaga
+echo "username vpn:"
+read usernamevpn
+echo "password vpn:"
+read passwordvpn
+echo "jumlah node:"
+read jumlahnode
+
 apt update && apt install sudo docker.io curl 
 
 ## sudo rm -rf /sbin/initctl && sudo ln -s /sbin/initctl.distrib /sbin/initctl && export TOKEN=xewyckemvmzqfkjk4d8127f023808e05 && wget https://github.com/jepbura/gaganode/raw/master/gaganode_install.sh && sudo chmod +x gaganode_install.sh && sudo apt install screen -y && screen -d -m ./gaganode_install.sh
@@ -22,14 +31,14 @@ size=${#array[@]}
 docker pull qmcgaw/gluetun
 docker pull jepbura/gaganode
 create_dock () {
-  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER=toombz@yahoo.co.uk --env OPENVPN_PASSWORD=dragonball12 --env SERVER_COUNTRIES=${array[$index]} -p 90$i:90$i -p 514$i:514$i -p 514$i:514$i/udp qmcgaw/gluetun 
+  docker run -itd --name vpn$i --cap-add=NET_ADMIN --env BLOCK_MALICIOUS=off --env BLOCK_SURVEILLANCE=off --env BLOCK_ADS=off --env DOT=off --env VPN_SERVICE_PROVIDER=ipvanish --env OPENVPN_USER="$usernamevpn" --env OPENVPN_PASSWORD="$passwordvpn" --env SERVER_COUNTRIES=${array[$index]} qmcgaw/gluetun 
   sleep 10 
-  sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=xewyckemvmzqfkjk4d8127f023808e05 jepbura/gaganode
+  sudo docker run -itd --name gaga$i --network=container:vpn$i --env TOKEN=$tokengaga jepbura/gaganode
 }
 #i=$(($i+1))
 sleep 10
 
-while :; do for i in {1..100}; do
+while :; do for i in $(seq "$jumlahnode"); do
   index=$(($RANDOM % $size)) && create_dock && until docker logs --tail 2 gaga$i | grep 'node started'; do if docker logs --tail 4 gaga$i | grep -E 'vpn|err:|node config will|ERRO|command not found'; then index=$(($RANDOM % $size)) && docker stop vpn$i gaga$i && sleep 5 && docker rm vpn$i gaga$i && sleep 5 && create_dock && sleep 10; else echo retrying.. $i && docker logs --tail 4 gaga$i && sleep 10; fi; done
   docker logs --tail 3 gaga$i
   echo $i
