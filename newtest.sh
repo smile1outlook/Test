@@ -1,7 +1,7 @@
 #!/bin/sh
 
 wget -O Dockerfile https://github.com/smile1outlook/Test/raw/master/Dockerfile2
-docker build . -t smile
+docker build . -t smile --no-cache
 > socks.txt
 while read a; do echo $a | cut -f1,2 -d':' >> socks.txt; done<socks5.txt
 
