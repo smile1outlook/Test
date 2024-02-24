@@ -23,6 +23,8 @@ echo "apphub-linux found" &&
 cd ./apphub-linux* &&
 sudo ./apphub service start &&
 sudo ./apphub status &&
+sudo ./apphub service restart &&
+sudo ./apphub status &&
 sudo ./apphub log &&
 sudo ./apps/gaganode/gaganode log &&
 cat ./apps/gaganode/user_conf/default.toml
