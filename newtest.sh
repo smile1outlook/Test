@@ -2,6 +2,8 @@
 
 wget -O Dockerfile https://github.com/smile1outlook/Test/raw/master/Dockerfile2
 docker build . -t smile
+> socks.txt
+while read a; do echo $a | cut -f1,2 -d':' >> socks.txt; done<socks5.txt
 
 EXTRA_COMMANDS='echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > /etc/resolv.conf;ip rule add iif lo ipproto udp dport 53 lookup main;'
 #echo "hallo $proxy"
