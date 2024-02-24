@@ -21,7 +21,10 @@ echo "DOWNLOADLINK=$DOWNLOADLINK"
 if [ -d ./apphub-linux* ]; then
 echo "apphub-linux found" &&
 cd ./apphub-linux* &&
+sudo ./apphub service remove &&
+sudo ./apphub service install &&
 sudo ./apphub service start &&
+sudo ./apphub service restart &&
 sudo ./apphub status &&
 sudo ./apphub log &&
 sudo ./apps/gaganode/gaganode log &&
