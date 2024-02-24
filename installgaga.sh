@@ -28,7 +28,7 @@ sudo ./apps/gaganode/gaganode log &&
 cat ./apps/gaganode/user_conf/default.toml
 else
 echo "apphub-linux NOT found."
-sudo curl -o $FILENAME $DOWNLOADLINK &&
+sudo curl -o $FILENAME -k $DOWNLOADLINK &&
 sudo tar -zxf $FILENAME &&
 sudo rm -f $FILENAME &&
 cd ./apphub-linux* &&
@@ -42,7 +42,7 @@ sleep 30 && echo ' ____   ___  _   _ _____
 | |_| | |_| | |\  | |___
 |____/ \___/|_| \_|_____|'
 sudo ./apphub status && 
-sudo ./apps/gaganode/gaganode config set --token=hbzrwiekmvbdlaqudd1ea590f967ccf9 &&
+sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
 sudo ./apphub restart &&
 sudo ./apps/gaganode/gaganode log
 fi
