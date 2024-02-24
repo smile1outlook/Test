@@ -20,8 +20,8 @@ echo "DOWNLOADLINK=$DOWNLOADLINK"
 
 if [ -d ./apphub-linux* ]; then
 cd ./apphub-linux* &&
-sudo ./apphub service remove &&
-sudo ./apphub service install &&
+sudo ./apphub service remove
+sudo ./apphub service install
 sudo ./apphub service start &&
 sudo ./apphub status &&
 sleep 30 && echo ' ____   ___  _   _ _____
@@ -30,7 +30,6 @@ sleep 30 && echo ' ____   ___  _   _ _____
 | |_| | |_| | |\  | |___
 |____/ \___/|_| \_|_____|'
 sudo ./apphub status && 
-sudo apt update && sudo apt upgrade &&
 sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
 sudo ./apphub restart &&
 sudo ./apps/gaganode/gaganode log
