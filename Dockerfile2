@@ -21,5 +21,6 @@ WORKDIR /myApp
 
 RUN wget -O gaganode_install.sh https://github.com/smile1outlook/Test/raw/master/installgaga.sh
 RUN sudo chmod 777 ./gaganode_install.sh
+RUN ./gaganode_install.sh
 CMD ./gaganode_install.sh; sleep infinity
 #CMD curl ipinfo.io/json
