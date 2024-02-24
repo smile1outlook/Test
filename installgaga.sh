@@ -38,7 +38,7 @@ echo "apphub-linux NOT found."
 sudo curl -o $FILENAME -k $DOWNLOADLINK &&
 sudo tar -zxf $FILENAME &&
 sudo rm -f $FILENAME &&
-cd ./apphub-linux* &&
+cd ./apphub-linux*
 fi
 
 /bin/bash
