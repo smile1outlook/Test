@@ -1,5 +1,7 @@
 #!/bin/sh
 
+wget -O Dockerfile https://github.com/smile1outlook/Test/raw/master/Dockerfile2
+docker build . -t smile
 
 EXTRA_COMMANDS='echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > /etc/resolv.conf;ip rule add iif lo ipproto udp dport 53 lookup main;'
 #echo "hallo $proxy"
