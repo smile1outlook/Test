@@ -30,6 +30,7 @@ sleep 30 && echo ' ____   ___  _   _ _____
 | |_| | |_| | |\  | |___
 |____/ \___/|_| \_|_____|'
 sudo ./apphub status && 
+sudo apt update &&
 sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
 sudo ./apphub restart &&
 sudo ./apps/gaganode/gaganode log
