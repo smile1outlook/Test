@@ -28,3 +28,4 @@ EXPOSE 36060/tcp
 EXPOSE 36060/udp
 CMD cd apphub-linux* && ./apphub service start && sudo ./apphub service restart && sleep 10  && ./apphub service status && sudo ./apps/gaganode/gaganode log && curl ipinfo.io/json; sleep infinity
 #CMD curl ipinfo.io/json
+
