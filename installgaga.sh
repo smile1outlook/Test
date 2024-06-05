@@ -41,7 +41,7 @@ sudo ./apphub service remove &&
 sudo ./apphub service install
 #sudo ./apphub service start
 #sudo ./apphub status &&
-#sleep 30 && echo ' ____   ___  _   _ _____
+sleep 5 && echo ' ____   ___  _   _ _____
 |  _ \ / _ \| \ | | ____|
 | | | | | | |  \| |  _|
 | |_| | |_| | |\  | |___
