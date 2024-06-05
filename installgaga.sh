@@ -23,8 +23,6 @@ echo "apphub-linux found" &&
 cd ./apphub-linux* &&
 sudo ./apphub service start &&
 sudo ./apphub status &&
-sleep 30 &&
-sudo ./apphub status &&
 sudo ./apphub service restart &&
 sudo ./apphub status &&
 sudo ./apphub log &&
