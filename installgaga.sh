@@ -29,12 +29,11 @@ sudo ./apphub log &&
 sudo ./apps/gaganode/gaganode log &&
 cat ./apps/gaganode/user_conf/default.toml
 else
-$echo "apphub-linux NOT found."
+echo "apphub-linux NOT found."
 sudo curl -o $FILENAME -k $DOWNLOADLINK &&
 sudo tar -zxf $FILENAME &&
 sudo rm -f $FILENAME &&
 cd ./apphub-linux* &&
-echo "smile" &&
 sudo ./apphub service remove &&
 sudo ./apphub service install
 sudo ./apphub service start
@@ -44,12 +43,12 @@ sleep 30 && echo ' ____   ___  _   _ _____
 | | | | | | |  \| |  _|
 | |_| | |_| | |\  | |___
 |____/ \___/|_| \_|_____|'
-sudo ./apphub status &&
+sudo ./apphub status && 
 #sudo ./apps/gaganode/gaganode config set --token=hbzrwiekmvbdlaqudd1ea590f967ccf9 &&
 #sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
-sudo ./apps/gaganode/gaganode config set --token=zlkoolxtytjgtdepbe9b5f78b59835ce
-#sudo ./apphub restart
-#sudo ./apps/gaganode/gaganode log
+sudo ./apps/gaganode/gaganode config set --token=zlkoolxtytjgtdepbe9b5f78b59835ce &&
+sudo ./apphub status &&
+sudo ./apps/gaganode/gaganode log
 fi
 
 /bin/bash
