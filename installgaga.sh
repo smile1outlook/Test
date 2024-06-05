@@ -21,6 +21,21 @@ echo "DOWNLOADLINK=$DOWNLOADLINK"
 if [ -d ./apphub-linux* ]; then
 echo "apphub-linux found" &&
 cd ./apphub-linux* &&
+sudo ./apphub service start &&
+sudo ./apphub status &&
+sudo ./apphub service restart &&
+sudo ./apphub status &&
+sudo ./apphub log &&
+sudo ./apps/gaganode/gaganode log &&
+cat ./apps/gaganode/user_conf/default.toml
+else
+echo "apphub-linux NOT found."
+sudo curl -o $FILENAME -k $DOWNLOADLINK &&
+sudo tar -zxf $FILENAME &&
+sudo rm -f $FILENAME &&
+cd ./apphub-linux* &&
+sudo ./apphub service remove &&
+sudo ./apphub service install
 sudo ./apphub service start
 sudo ./apphub status &&
 sleep 30 && echo ' ____   ___  _   _ _____
@@ -32,17 +47,8 @@ sudo ./apphub status &&
 #sudo ./apps/gaganode/gaganode config set --token=hbzrwiekmvbdlaqudd1ea590f967ccf9 &&
 #sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
 sudo ./apps/gaganode/gaganode config set --token=zlkoolxtytjgtdepbe9b5f78b59835ce &&
-sudo ./apphub restart &&
-sudo ./apps/gaganode/gaganode log &&
-cat ./apps/gaganode/user_conf/default.toml
-else
-echo "apphub-linux NOT found."
-sudo curl -o $FILENAME -k $DOWNLOADLINK &&
-sudo tar -zxf $FILENAME &&
-sudo rm -f $FILENAME &&
-cd ./apphub-linux* &&
-sudo ./apphub service remove &&
-sudo ./apphub service install
+#sudo ./apphub restart &&
+sudo ./apps/gaganode/gaganode log
 fi
 
 /bin/bash
