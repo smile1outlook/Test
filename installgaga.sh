@@ -37,6 +37,7 @@ sudo curl -o $FILENAME -k $DOWNLOADLINK &&
 sudo tar -zxf $FILENAME &&
 sudo rm -f $FILENAME &&
 cd ./apphub-linux* &&
+echo "smile" &&
 sudo ./apphub service remove &&
 sudo ./apphub service install
 #sudo ./apphub service start
