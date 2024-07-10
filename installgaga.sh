@@ -46,7 +46,7 @@ sleep 30 && echo ' ____   ___  _   _ _____
 sudo ./apphub status && 
 #sudo ./apps/gaganode/gaganode config set --token=hbzrwiekmvbdlaqudd1ea590f967ccf9 &&
 #sudo ./apps/gaganode/gaganode config set --token=ojxqyftmctxeokuq1450466264c9f23f &&
-sudo ./apps/gaganode/gaganode config set --token=zlkoolxtytjgtdepbe9b5f78b59835ce &&
+sudo ./apps/gaganode/gaganode config set --token=islzdisosdueopym2ff37a8dc3d8a916 &&
 #sudo ./apphub restart &&
 sudo ./apps/gaganode/gaganode log
 fi
